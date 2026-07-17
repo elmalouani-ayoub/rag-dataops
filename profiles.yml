@@ -1,0 +1,22 @@
+# Deux cibles :
+#  - "dev" (defaut) : DuckDB, 100 % local et gratuit -> reproductible, ideal pour la CI.
+#  - "prod" : BigQuery (GCP) -> montre la portabilite vers le cloud (offres Ofi Invest / Doctolib).
+#    Les memes modeles dbt tournent sur les deux, sans changement de code.
+#
+# En CI, dbt utilise la cible "dev" (voir .github/workflows/ci.yml).
+rag_dataops:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "target/rag_dataops.duckdb"
+      threads: 4
+
+    prod:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('GCP_PROJECT', 'my-gcp-project') }}"
+      dataset: rag_dataops
+      keyfile: "{{ env_var('GCP_KEYFILE', '/secrets/gcp.json') }}"
+      location: EU
+      threads: 8

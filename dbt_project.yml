@@ -1,0 +1,37 @@
+name: 'rag_dataops'
+version: '1.0.0'
+config-version: 2
+
+# Pipeline DataOps qui industrialise les resultats d'evaluation du Projet 1 :
+# seeds (donnees brutes) -> staging (nettoyage) -> marts (schema en etoile) + tests qualite.
+profile: 'rag_dataops'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  rag_dataops:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  rag_dataops:
+    +schema: raw
+    raw_eval_results:
+      +column_types:
+        hit: integer
+        span_recall: integer
+        chunk_size: integer
+        chunk_overlap: integer
+        top_k: integer

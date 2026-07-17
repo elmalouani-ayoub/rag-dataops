@@ -1,0 +1,43 @@
+name: dbt CI
+
+# Rejoue TOUT le pipeline (seed -> run -> test) a chaque push / PR, sur DuckDB.
+# Aucun secret ni compte cloud requis : la CI est 100 % reproductible.
+# C'est le coeur des offres DataOps (Michelin : CI/CD ; Ofi Invest : qualite de donnees).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: dbt build (seed + run + test)
+        run: dbt build --profiles-dir .
+
+      - name: Generate documentation & lineage
+        run: dbt docs generate --profiles-dir .
+
+      - name: Upload dbt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dbt-artifacts
+          path: |
+            target/manifest.json
+            target/catalog.json
+            target/run_results.json

@@ -1,0 +1,4 @@
+# Pipeline 100 % local et reproductible (aucun compte cloud requis).
+dbt-duckdb>=1.9,<2
+# Cible cloud optionnelle (offres Ofi Invest / Doctolib) :
+# dbt-bigquery>=1.9,<2

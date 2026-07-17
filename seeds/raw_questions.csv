@@ -1,0 +1,21 @@
+question_id,question,source_doc,answer
+q01,Combien de jours de conges payes par an un salarie en CDI acquiert-il ?,01-conges-rtt.md,25 jours ouvres de conges payes par an.
+q02,Combien de jours de RTT les salaries au forfait jours ont-ils par an ?,01-conges-rtt.md,10 jours de RTT par an.
+q03,Combien de jours de conge sont accordes pour un mariage ?,01-conges-rtt.md,4 jours pour un mariage ou un PACS.
+q04,Combien de jours de teletravail par semaine sont autorises au maximum ?,02-teletravail.md,Jusqu'a 3 jours par semaine.
+q05,Quel est le montant de l'indemnite de teletravail ?,02-teletravail.md,10 euros par mois.
+q06,Quel jour est une journee de presence obligatoire sur site ?,02-teletravail.md,Le mardi.
+q07,Quel est le plafond de remboursement pour un repas en deplacement ?,03-notes-de-frais.md,19 euros par repas.
+q08,Quel est le montant de l'indemnite kilometrique ?,03-notes-de-frais.md,"0,52 euro par kilometre."
+q09,Sous quel delai une note de frais validee est-elle remboursee ?,03-notes-de-frais.md,Sous un delai maximum de 30 jours apres validation.
+q10,Quelle est la longueur minimale d'un mot de passe professionnel ?,04-securite-informatique.md,Au minimum 12 caracteres.
+q11,Tous les combien de jours le mot de passe doit-il etre renouvele ?,04-securite-informatique.md,Tous les 90 jours.
+q12,A quelle adresse faut-il signaler un courriel de phishing ?,04-securite-informatique.md,A l'adresse securite@meridian.fr.
+q13,Quelle est la duree de la periode d'essai pour un cadre ?,05-onboarding.md,"4 mois pour un cadre, renouvelable une fois."
+q14,Combien de temps dure le parcours d'integration ?,05-onboarding.md,Un parcours d'integration de 5 jours.
+q15,Tous les combien d'annees le parc informatique est-il renouvele ?,06-materiel-support-it.md,Tous les 4 ans.
+q16,Quels sont les horaires du support informatique ?,06-materiel-support-it.md,De 8h a 19h du lundi au vendredi.
+q17,Quel est le budget formation annuel par salarie ?,07-formation.md,1 500 euros par an.
+q18,Combien de jours avant le depart faut-il reserver un voyage professionnel ?,08-voyages-professionnels.md,Au moins 10 jours avant le depart.
+q19,Quelle est la valeur faciale d'un titre-restaurant ?,09-avantages-sociaux.md,10 euros.
+q20,Quel est le preavis de demission pour un cadre ?,10-offboarding.md,3 mois pour un cadre.

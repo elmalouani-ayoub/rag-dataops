@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_eval_results
+    description: >
+      Table de faits nettoyee, au grain configuration x question. Une ligne = le
+      resultat du retrieval pour une question donnee sous une configuration donnee.
+    columns:
+      - name: retrieval_key
+        description: Cle de substitution de la ligne (config + question).
+        data_tests: [unique, not_null]
+      - name: config_key
+        description: Cle de substitution de la configuration d'hyperparametres.
+        data_tests: [not_null]
+      - name: embedding
+        data_tests:
+          - accepted_values:
+              values: ['tfidf', 'hashing']
+      - name: hit
+        description: 1 si le bon document est dans le top_k, sinon 0.
+        data_tests:
+          - accepted_values:
+              values: [0, 1]
+      - name: span_recall
+        data_tests:
+          - accepted_values:
+              values: [0, 1]
+      - name: question_id
+        data_tests: [not_null]
+
+  - name: stg_questions
+    description: Les questions du jeu d'evaluation (dimension source).
+    columns:
+      - name: question_id
+        data_tests: [unique, not_null]
+      - name: source_doc
+        description: Document contenant la reponse (verite-terrain).
+        data_tests: [not_null]
+
+  - name: stg_documents
+    description: Les documents de la base de connaissances (dimension source).
+    columns:
+      - name: doc_id
+        data_tests: [unique, not_null]
+      - name: category
+        data_tests:
+          - accepted_values:
+              values: ['RH', 'IT', 'Finance', 'Autre']

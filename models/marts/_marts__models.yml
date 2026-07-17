@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: dim_config
+    description: Dimension des configurations d'hyperparametres evaluees.
+    columns:
+      - name: config_key
+        data_tests: [unique, not_null]
+      - name: top_k
+        data_tests: [not_null]
+
+  - name: dim_question
+    description: Dimension des questions d'evaluation, reliee au document source.
+    columns:
+      - name: question_key
+        data_tests: [unique, not_null]
+      - name: document_key
+        description: FK vers dim_document (verite-terrain).
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_document')
+              field: document_key
+
+  - name: dim_document
+    description: Dimension des documents de la base de connaissances.
+    columns:
+      - name: document_key
+        data_tests: [unique, not_null]
+
+  - name: dim_embedding
+    description: Dimension des methodes d'embedding (famille lexicale/semantique).
+    columns:
+      - name: embedding_key
+        data_tests: [unique, not_null]
+
+  - name: fct_retrieval
+    description: >
+      Table de faits centrale du schema en etoile. Grain : configuration x question.
+      Verifie l'integrite referentielle vers toutes les dimensions.
+    columns:
+      - name: retrieval_key
+        data_tests: [unique, not_null]
+      - name: config_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_config')
+              field: config_key
+      - name: question_key
+        data_tests:
+          - relationships:
+              to: ref('dim_question')
+              field: question_key
+      - name: embedding_key
+        data_tests:
+          - relationships:
+              to: ref('dim_embedding')
+              field: embedding_key
+      - name: hit
+        data_tests:
+          - accepted_values:
+              values: [0, 1]
+
+  - name: agg_config_performance
+    description: >
+      Metriques agregees par configuration, pretes pour la BI (Power BI). Reproduit
+      dans l'entrepot le tableau de resultats du Projet 1, avec un classement qualite.
+    columns:
+      - name: config_label
+        data_tests: [unique, not_null]
+      - name: quality_rank
+        data_tests: [unique, not_null]
+      - name: hit_rate
+        description: Taux de reussite moyen (doit rester dans [0, 1]).
+        data_tests:
+          - accepted_range:
+              min_value: 0
+              max_value: 1

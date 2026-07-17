@@ -1,0 +1,11 @@
+doc_id,title,category,word_count
+01-conges-rtt.md,Congés payés et RTT,RH,239
+02-teletravail.md,Politique de télétravail,RH,196
+03-notes-de-frais.md,Notes de frais et remboursements,Finance,199
+04-securite-informatique.md,Sécurité informatique et mots de passe,IT,221
+05-onboarding.md,Intégration d'un nouveau collaborateur,RH,220
+06-materiel-support-it.md,Matériel informatique et support IT,IT,229
+07-formation.md,Formation et développement des compétences,RH,224
+08-voyages-professionnels.md,Politique de voyage professionnel,Finance,224
+09-avantages-sociaux.md,Avantages sociaux,RH,240
+10-offboarding.md,Procédure de départ d'un collaborateur,RH,227
