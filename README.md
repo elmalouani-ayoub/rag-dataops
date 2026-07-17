@@ -2,7 +2,7 @@
 
 ![dbt](https://img.shields.io/badge/transform-dbt-ff694b)
 ![DuckDB](https://img.shields.io/badge/warehouse-DuckDB%20%2F%20BigQuery-fff000)
-![CI](https://github.com/<ton-user>/rag-dataops/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/elmalouani-ayoub/rag-dataops/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Un pipeline **DataOps** qui industrialise les résultats d'évaluation du
